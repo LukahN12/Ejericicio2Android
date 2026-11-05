@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
             TareaClaseTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     GreetingText(
-                        message = "Lucas Melero Garcia",
+                        nombre = "Lucas Melero Garcia",
                         from = "Tarjeta de presentación",
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -45,16 +45,20 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(message: String, from: String,
-                 modifier: Modifier = Modifier) {
+fun GreetingText(nombre: String, from: String, email: String = "lukahMG12@gmail.com", telefono: String = "+34 123 45 67 89", redSocial: String = "@lukah", modifier: Modifier = Modifier) {
+    val TAMANOLETRA = 28
     val image = painterResource(R.drawable.a_round_fat_seal_smiling_underwater)
+    val imageTelefono = painterResource(R.drawable.green_telephone_icon_telephone_icon_ai_format_free_vector)
+    val imageEmail = painterResource(R.drawable._95645)
+    val imageRedSocial = painterResource(R.drawable._4207282)
+
     Column(
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
+        modifier = modifier.padding(top = 190.dp)
     ) {
         Column(
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier
         ) {
@@ -68,92 +72,95 @@ fun GreetingText(message: String, from: String,
                     .width(125.dp)
             )
             Text(
-                text = message,
-                fontSize = 25.sp,
+                text = nombre,
+                fontSize = TAMANOLETRA.sp,
                 lineHeight = 25.sp,
                 modifier = Modifier
                     .padding(horizontal = 50.dp, vertical = 10.dp)
             )
             Text(
                 text = from,
-                fontSize = 25.sp,
+                fontSize = TAMANOLETRA.sp,
                 modifier = Modifier
                     .padding(horizontal = 50.dp, vertical = 10.dp)
             )
         }
 
         Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = modifier.padding(top = 125.dp)
         ) {
             Row() {
-                Image(
-                painter = image,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .padding(5.dp)
-                    .height(25.dp)
-                    .width(25.dp)
+                Column(
+                    verticalArrangement = Arrangement.Bottom,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Image(
+                        painter = imageTelefono,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .height(25.dp)
+                            .width(25.dp)
 
-                )
+                    )
 
-                Text(
-                    text = message,
-                    fontSize = 20.sp,
-                    lineHeight = 25.sp,
-                    modifier = Modifier
-                        .padding(horizontal = 50.dp, vertical = 10.dp)
-                )
+                    Image(
+                        painter = imageEmail,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .height(25.dp)
+                            .width(25.dp)
 
-            }
+                    )
 
-            Row() {
-                Image(
-                    painter = image,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .padding(5.dp)
-                        .height(25.dp)
-                        .width(25.dp)
+                    Image(
+                        painter = imageRedSocial,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .height(25.dp)
+                            .width(25.dp)
 
-                )
+                    )
+                }
 
-                Text(
-                    text = message,
-                    fontSize = 20.sp,
-                    lineHeight = 25.sp,
-                    modifier = Modifier
-                        .padding(horizontal = 50.dp, vertical = 10.dp)
-                )
+                Column(
+                    verticalArrangement = Arrangement.Bottom,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = telefono,
+                        fontSize = (TAMANOLETRA - 10).sp,
+                        lineHeight = 25.sp,
+                        modifier = Modifier
+                            .padding(horizontal = 50.dp, vertical = 10.dp)
+                    )
 
-            }
+                    Text(
+                        text = redSocial,
+                        fontSize = (TAMANOLETRA - 10).sp,
+                        lineHeight = 25.sp,
+                        modifier = Modifier
+                            .padding(horizontal = 50.dp, vertical = 10.dp)
+                    )
 
-            Row() {
-                Image(
-                    painter = image,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .padding(5.dp)
-                        .height(25.dp)
-                        .width(25.dp)
-
-                )
-
-                Text(
-                    text = message,
-                    fontSize = 20.sp,
-                    lineHeight = 25.sp,
-                    modifier = Modifier
-                        .padding(horizontal = 50.dp, vertical = 10.dp)
-                )
-
+                    Text(
+                        text = email,
+                        fontSize = (TAMANOLETRA - 10).sp,
+                        lineHeight = 25.sp,
+                        modifier = Modifier
+                            .padding(horizontal = 50.dp, vertical = 10.dp)
+                    )
+                }
             }
         }
     }
-
 }
 
 @Preview(showBackground = true)
